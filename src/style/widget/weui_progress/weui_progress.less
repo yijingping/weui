@@ -1,23 +1,29 @@
 @import "../../base/fn";
+/* 进度条 布局
+weui_progress
+    weui_progress_bar
+        weui_progress_inner_bar
+    weui_progress_opr
 
-.weui_progress {
+ */
+.weui_progress {    // 使用flex实现进度条
     display: flex;
     align-items: center;
 }
 
-.weui_progress_bar {
+.weui_progress_bar {    // 进度条背景, 占满出opr的整行
     background-color: @weuiProgressBg;
     height: @weuiProgressHeight;
     flex: 1;
 }
 
-.weui_progress_inner_bar {
+.weui_progress_inner_bar {      // 绿色的进度条, 使用width的百分比表示当前精度
     width: 0;
     height: 100%;
     background-color: @weuiProgressColor;
 }
 
-.weui_progress_opr {
+.weui_progress_opr {       // 操作按钮, 如✘号, 与进度条保持15px的距离
     display: block;
     margin-left: 15px;
     font-size: 0;

@@ -2,10 +2,10 @@
 
 // method2 accessbility
 .weui_cells_radio{
-    .weui_cell_ft {
-        padding-left: @weuiCellInnerGapH;
+    .weui_cell_ft {                              // 单选按钮位于footer
+        padding-left: @weuiCellInnerGapH;       // 选择按钮,要与前面的文字间隔一些距离
     }
-    .weui_cell {
+    .weui_cell {                                // 按下时有高亮效果
         &:active {
             background-color: #ECECEC;
         }
@@ -13,9 +13,9 @@
 }
 .weui_check {
     // radio
-    .weui_cells_radio & {
+    .weui_cells_radio & {                   // 未选中时,weui_icon_checked不显示任何东西
         &:checked {
-            & + .weui_icon_checked {
+            & + .weui_icon_checked {        // 选中时, weui_icon_checked显示绿色的打钩按钮
                 &:before {
                     display: block;
                     content: '\EA08';

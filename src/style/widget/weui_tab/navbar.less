@@ -1,45 +1,45 @@
 @import "../../base/fn";
 
-.weui_navbar {
-    display: flex;
+.weui_navbar {          // 顶部选项卡navbar
+    display: flex;          // 使用flex实现
     position: absolute;
     z-index: 500;
-    top: 0;
+    top: 0;                 // 显示在顶部
     width: 100%;
-    background-color: #fafafa;
+    background-color: #fafafa;  // 背景默认为浅灰色
 
-    &:after {
+    &:after {                   // 都有bottomline, 保证navbar和下面的内容有分隔开
         .setBottomLine(@globalBorderColor);
     }
 
-    & + .weui_tab_bd {
+    & + .weui_tab_bd {          //  内容区域, 距离上方50px, 防止被navbar遮住
         padding-top: 50px;
         padding-bottom: 0;
     }
 }
 
-.weui_navbar_item {
+.weui_navbar_item {         // navbar 的每个选项卡
     position: relative;
     display: block;
-    flex: 1;
-    padding: 13px 0;
+    flex: 1;                // flex:1, 表示均等平分
+    padding: 13px 0;        // 保证水平和垂直居中
     text-align: center;
     font-size: 15px;
     -webkit-tap-highlight-color: transparent;
 
-    &:active {
+    &:active {              // 按下时变暗
         background-color: #ededed;
     }
 
-    &.weui_bar_item_on {
+    &.weui_bar_item_on {        // 当前被选中的比其它的背景色暗, 方便区分
         background-color: #eaeaea;
     }
 
-    &:after {
+    &:after {                   // 标签之间有一个右分割线
         .setRightLine(#cccccc);
     }
 
-    &:last-child {
+    &:last-child {              // 防止最后一个出现分割线
         &:after {
             display: none;
         }

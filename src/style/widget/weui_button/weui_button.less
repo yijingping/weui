@@ -13,40 +13,40 @@
 
 button, input {
     &.weui_btn {
-        width: 100%;
+        width: 100%;                // 按钮默认占满父元素
         border-width: 0;
         outline: 0;
-        -webkit-appearance: none;
+        -webkit-appearance: none;   // 禁用原生样式
         &:focus {
-            outline: 0;
+            outline: 0;             // 选中时不要加outline
         }
     }
     &.weui_btn_inline,&.weui_btn_mini {
-        width: auto;
+        width: auto;                // inline、mini的button宽度随文字宽度变动
     }
 }
 
 /*gap between btn*/
 .weui_btn + .weui_btn {
-    margin-top: @weuiBtnDefaultGap;
+    margin-top: @weuiBtnDefaultGap; // 相邻的button,在垂直上保持一定间距
 }
 
-.weui_btn.weui_btn_inline + .weui_btn.weui_btn_inline {
+.weui_btn.weui_btn_inline + .weui_btn.weui_btn_inline { // 相邻的inline、mini的button,在水平上保持一定间距
     margin-top: auto;
     margin-left: @weuiBtnDefaultGap;
 }
 
 .weui_btn_area {
-    margin: @weuiCellsMarginTop @weuiBtnDefaultGap .3em;
+    margin: @weuiCellsMarginTop @weuiBtnDefaultGap .3em;    // button area 要距离其它部分稍微远一点,看起来比较舒服
     &.weui_btn_area_inline {
-        display: flex;
+        display: flex;                                      // area inline 采用flex布局
         .weui_btn {
             margin-top: auto;
-            margin-right: @weuiBtnDefaultGap;
+            margin-right: @weuiBtnDefaultGap;               // 按钮之间保证一点间距
             width: 100%;
-            flex: 1;
+            flex: 1;                                        // 按钮大小一样
             &:last-child {
-                margin-right: 0;
+                margin-right: 0;                            // 消除最后一个button的右间距, 保证所有button看起来居中
             }
         }
     }

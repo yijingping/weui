@@ -1,5 +1,19 @@
 @import "../../base/fn";
 
+/* 布局结构
+weui_uploader
+    weui_uploader_hd
+        hd bd ft
+    weui_uploader_bd
+        ul.weui_uploader_files
+            li.weui_uploader_file
+            li.weui_uploader_file
+            ...
+        weui_uploader_input_wrp
+            input.weui_uploader_input
+
+*/
+
 @weuiUploaderBorderColor:#D9D9D9;
 @weuiUploaderActiveBorderColor:#999999;
 @weuiUploaderFileSpacing: 9px;
@@ -7,7 +21,7 @@
 @weuiUploaderBorderWidth: 1px;
 
 .weui_uploader{}
-.weui_uploader_hd{
+.weui_uploader_hd{          // header 文字描述信息
     padding-top: 0;
     padding-right: 0;
     padding-left: 0;
@@ -15,27 +29,27 @@
         font-size: 1em;
     }
 }
-.weui_uploader_bd{
+.weui_uploader_bd{          // 图片区域
     margin-bottom: @weuiCellGapH - (@weuiCellGapV + @weuiUploaderFileSpacing);
-    margin-right: -@weuiUploaderFileSpacing;
+    margin-right: -@weuiUploaderFileSpacing;    // 保证files整体看起来居中
     overflow: hidden;
 }
 
 .weui_uploader_files{
-    list-style: none;
+    list-style: none;    // 禁用ul原生样式
 }
-.weui_uploader_file{
+.weui_uploader_file{    // 使用float布局,并设置右边距和下边距,保证对齐
     float: left;
     margin-right: @weuiUploaderFileSpacing;
     margin-bottom: @weuiUploaderFileSpacing;
     width: @weuiUploaderSize;
     height: @weuiUploaderSize;
-    background: no-repeat center center;
+    background: no-repeat center center;   // 背景图片占满,可预览
     background-size: cover;
 }
-.weui_uploader_status{
+.weui_uploader_status{      // 图片中央的上传进度或提示图标
     position: relative;
-    &:before{
+    &:before{               // 先在图片上加一个半透明的灰色蒙版
         content: " ";
         position: absolute;
         top: 0;
@@ -44,27 +58,27 @@
         left: 0;
         background-color: rgba(0, 0, 0, .5);
     }
-    .weui_uploader_status_content{
+    .weui_uploader_status_content{  // 然后在蒙版中间,显示内容
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: #FFFFFF;
     }
-    .weui_icon_warn{
+    .weui_icon_warn{                // 或者显示图标
         display: block;
     }
 }
 
-.weui_uploader_input_wrp{
+.weui_uploader_input_wrp{           // 添加图片的按钮
     float:left;
     position: relative;
     margin-right: @weuiUploaderFileSpacing;
     margin-bottom: @weuiUploaderFileSpacing;
     width: @weuiUploaderSize - @weuiUploaderBorderWidth * 2;
     height: @weuiUploaderSize - @weuiUploaderBorderWidth * 2;
-    border: @weuiUploaderBorderWidth solid @weuiUploaderBorderColor;
-    &:before, &:after{
+    border: @weuiUploaderBorderWidth solid @weuiUploaderBorderColor;  // 加一个边框
+    &:before, &:after{              // before和after构造 + 按钮
         content: " ";
         position: absolute;
         top: 50%;
@@ -80,20 +94,20 @@
         width: @weuiUploaderSize / 2;
         height: @weuiUploaderBorderWidth + 1;
     }
-    &:active{
+    &:active{                   // 按下时,边框和+按钮,颜色变暗, 让用户感知改变
         border-color: @weuiUploaderActiveBorderColor;
         &:before, &:after{
             background-color: @weuiUploaderActiveBorderColor;
         }
     }
 }
-.weui_uploader_input{
+.weui_uploader_input{           // 其实这是一个checkbox
     position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%;                // 铺满weui_uploader_input_wrp, 使整体点触有效
     height: 100%;
-    opacity: 0;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    opacity: 0;                 // 用opcacity=0,不显示按钮,但是功能能用
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);      // 禁用原生的高亮效果
 }

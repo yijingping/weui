@@ -1,28 +1,41 @@
 @import "../../base/fn";
 
+
+/* 组织结构规则是
+weui_cells_title
+weui_cells
+    weui_cell
+        weui_cell_hd weui_cell_bd weui_cell_ft
+    weui_cell
+        ...
+weui_cells_tips
+
+*/
+
 .weui_cell {
     // onepx
     position: relative;
     &:before {
-        .setTopLine(@weuiCellBorderColor);
-        left: @weuiCellGapH;
+        .setTopLine(@weuiCellBorderColor);   // 设置顶部的一条线条,就可以了, 层叠在一起,看起来就都有上下2条分割线
+        left: @weuiCellGapH;                 // 对齐
     }
-    &:first-child {
+    &:first-child {         // weui_cells中有top和bottom 2条线, 为了不重叠, 第1条线不绘制
         &:before {
             display: none;
         }
     }
 }
 
+/* cell组 */
 .weui_cells {
-    margin-top: @weuiCellsMarginTop;
-    background-color: @weuiCellBg;
-    line-height: @weuiCellLineHeight;
-    font-size: @weuiCellFontSize; //cell中间有效高度23px，跟客户端默认图标尺寸一致
+    margin-top: @weuiCellsMarginTop;     // 使用margin-top保证组与组之间保持一定的间距
+    background-color: @weuiCellBg;       // 背景色是白色
+    line-height: @weuiCellLineHeight;    // 设置合适的line-height,保证内部元素垂直居中
+    font-size: @weuiCellFontSize; //cell中间有效高度23px=17px*line-height，跟客户端默认图标尺寸一致
 
     overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
 
-    // onepx
+    // onepx ,  设置上下cells组分割线
     position: relative;
     &:before {
         .setTopLine(@weuiCellBorderColor);
@@ -31,23 +44,23 @@
         .setBottomLine(@weuiCellBorderColor);
     }
 }
-
+/* cell组前面的title */
 .weui_cells_title {
-    margin-top: .77em; // 15px - 行高
+    margin-top: .77em; // 15px - 行高  ,距离上面 稍微大一些,下面小一些, 比较容易分清和那个cells是一组
     margin-bottom: .3em; // 8px - 行高
-    padding-left: @weuiCellGapH;
+    padding-left: @weuiCellGapH;        // 与cells组左右内边距一致, 对齐好看
     padding-right: @weuiCellGapH;
     color: @globalTextColor;
     font-size: @weuiCellTipsFontSize;
 
-    & + .weui_cells {
+    & + .weui_cells {   // 紧接相邻的cells, margin-top设为0
         margin-top: 0;
     }
 }
-
+// cell组后面的底部说明文字
 .weui_cells_tips {
-    margin-top: .3em; // 8px - 行高
-    color: @globalTextColor;
+    margin-top: .3em; // 8px - 行高  ,靠近上面的cells
+    color: @globalTextColor;     // 灰色字,表示说明
     padding-left: @weuiCellGapH;
     padding-right: @weuiCellGapH;
     font-size: @weuiCellTipsFontSize;
@@ -56,15 +69,15 @@
 .weui_cell {
     padding: @weuiCellGapV @weuiCellGapH;
     position: relative; //这个是为了兼容cells容器onepx方案被before挡住而做的
-    display: flex;
+    display: flex;          // cell是用flex布局做的
     align-items: center;
 }
 
 .weui_cell_ft {
-    text-align: right;
+    text-align: right;      // 靠右, 有多长显示多长
     color: @globalTextColor;
 }
 
 .weui_cell_primary {
-    flex: 1;
+    flex: 1;       // .weui_cell_bd.weui_cell_primary 表示占满剩余空间
 }

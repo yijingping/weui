@@ -3,16 +3,22 @@
 @lineColor: #E5E5E5;
 @grayColor: #999999;
 
+/* panel布局结构
+weui_panel
+    weui_panel_hd
+    weui_panel_bd
+    weui_panel_ft
+*/
 .weui_panel {
     background-color: #FFFFFF;
-    margin-top: 10px;
-    &:first-child {
+    margin-top: 10px;           // panel之间保证10px的间距
+    &:first-child {             // 第1个panel紧邻着上面的元素
         margin-top: 0;
     }
 
     position: relative;
     overflow: hidden;
-    &:before {
+    &:before {                  // 每个panel都有topline和bottomline, 而且是顶着屏幕边
         .setTopLine(@lineColor);
     }
     &:after {
@@ -25,29 +31,29 @@
     color: @grayColor;
     font-size: 13px;
     position: relative;
-    &:after {
+    &:after {                   // panel header 有bottomline, 所以要注意不要和panel body中的第一个元素的topline重复
         .setBottomLine(@lineColor);
-        left: 15px;
+        left: 15px;             // 这条bottomline 要与后面的内容对齐
     }
 }
 
-.weui_panel_ft {
-    padding: 10px 15px 12px;
-    color: @grayColor;
+.weui_panel_ft {                // panel footer
+    padding: 10px 15px 12px;    // 垂直居中偏上, 看起来比较像一个panel的
+    color: @grayColor;          // 文字是灰色,表示没那么重要
     font-size: 14px;
     position: relative;
-    &:before {
+    &:before {                  // 与上面的panel,用topline隔开
         .setTopLine(@lineColor);
         left: 15px;
     }
-    .weui_panel_access & {
+    .weui_panel_access & {      // 如果可以点击, 字体用蓝色
         display: block;
         color: #586C94;
         .setTapColor;
-        &:active{
+        &:active{               // 按下后,背景色加深
             background-color:#ECECEC;
         }
-        &:after {
+        &:after {               // 生成一个向右的箭头,表示可以点击
             content: " ";
             .setArrow_Wap(right, 6px, #C7C7CC, 2px);
             position: absolute;

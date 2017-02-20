@@ -3,15 +3,15 @@
 .weui_cells_access {
     .weui_cell:not(.no_access) {
         // 在cell_access和其它类型的cell混着用的场景下，其它cell要加no_access，避免有点击态
-        .setTapColor;
-        &:active {
+        .setTapColor;           // tab有颜色反应, 和下面的active是类似的
+        &:active {              // 按下后,背景色加深,给用户一个反馈
             background-color: #ECECEC;
         }
     }
     a.weui_cell {
         color: inherit;
     }
-    .weui_cell_ft {
+    .weui_cell_ft {             // 在这一栏的最右边,生成一个向右的箭头,表示这一栏点进去还有内容
         &:after {
             content: " ";
             .setArrow_Wap(right, 6px, #C8C8CD, 2px);

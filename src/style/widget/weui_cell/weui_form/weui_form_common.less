@@ -1,28 +1,28 @@
 @import "../../../base/fn";
 
-.weui_label{
+.weui_label{                // label 固定宽度, 超出文字自动缩略
     display:block;
     width:@weuiCellLabelWidth;
     .text_wrap();
 }
 .weui_input {
-    width: 100%;
-    border: 0;
-    outline: 0;
-    -webkit-appearance: none;
+    width: 100%;            // 输入框占满整行
+    border: 0;              // 去掉边框效果,看起来比较整洁
+    outline: 0;             // 去掉外框
+    -webkit-appearance: none;   // 禁用原生效果
     background-color: transparent;
     font-size: inherit;
     color: inherit;
-    height: unit(@weuiCellLineHeight, em);
+    height: unit(@weuiCellLineHeight, em); //  看起来居中
     line-height: @weuiCellLineHeight;
 
     // hides the spin-button
-    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button{             // spin-button 是浏览器给input框加上的原生样式,如`type=number`会加上上下加减按钮, 我们需要禁用。
         -webkit-appearance: none;
         margin: 0;
     }
 }
-.weui_textarea {
+.weui_textarea {                    // 去掉textarea的一切边框效果
     display: block;
     border: 0;
     resize: none;
@@ -33,15 +33,15 @@
     outline: 0;
 }
 
-.weui_textarea_counter{
+.weui_textarea_counter{             // textarea的下一行最右边显示字数统计
     color: @globalDescColor;
     text-align: right;
-    .weui_cell_warn &{
+    .weui_cell_warn &{              // 可用红色来表示警告
         color: @globalWarnColor;
     }
 }
 
-.weui_toptips {
+.weui_toptips {                     // 在屏幕顶部中央显示的提示信息
     display:none;
     position: fixed;
     -webkit-transform: translateZ(0);
@@ -51,21 +51,21 @@
     font-size:14px;
     text-align: center;
     color: #FFF;
-    z-index: 50000;
-    &.weui_warn {
+    z-index: 50000;                 // 确保在最上面
+    &.weui_warn {                   // 红色表示警告或者报错
         background-color: @globalWarnColor;
     }
 }
 .weui_cells_form {
-    .weui_cell_warn{
+    .weui_cell_warn{                // cell warn时, cell内的文字变红, 并且warn icon显示
         color:@globalWarnColor;
         .weui_icon_warn{display:inline-block;}
     }
     .weui_cell_ft{font-size:0;}
-    .weui_icon_warn{
+    .weui_icon_warn{            // warn icon默认不显示
         display:none;
     }
-    input, textarea, label[for]{
+    input, textarea, label[for]{        // 高亮色是白色,和背景色相同,相当于没有效果
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 }

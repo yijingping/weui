@@ -1,12 +1,12 @@
 @import "../../base/fn";
 
 .weui_article {
-    padding: 20px 15px;
-    font-size: 15px;
+    padding: 20px 15px;         // 统统都是左右内边距15px,保证对齐
+    font-size: 15px;            // TODO: 为什么不是14px?
     section {
         margin-bottom: 1.5em;
     }
-    h1 {
+    h1 {                        // 每种标题不一样的地方是: font-size、margin-bottom, font-weight是一样的
         font-size: 17px;
         font-weight:400;
         margin-bottom: .75em;
@@ -24,9 +24,9 @@
         max-width: 100%;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        word-wrap: break-word;
+        word-wrap: break-word;                  // 文章内容断行, 比较好看
     }
     p {
-        margin: 10px 0;
+        margin: 10px 0;                         // 段落的上下间距使用10px
     }
 }

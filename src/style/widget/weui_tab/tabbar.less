@@ -1,32 +1,34 @@
 @import "../../base/fn";
 
-.weui_tabbar {
-    display: flex;
+.weui_tabbar {           // 底部导航tabbar
+    display: flex;      // 使用flex布局实现均等切分
     position: absolute;
     z-index: 500;
-    bottom: 0;
+    bottom: 0;              // 在页面底部, 占满整行, 颜色比背景色略暗, 用以区分导航栏
     width: 100%;
     background-color: #f7f7fa;
 
-    &:before {
+    &:before {              // 用一个topline与页面其它内容分隔开
         .setTopLine(#979797);
     }
 }
 
 .weui_tabbar_item {
     display: block;
-    flex: 1;
-    padding: 7px 0 0;
+    flex: 1;                 // flex:1 表示各个item均分导航栏
+    padding: 7px 0 0;        // 距离顶部7px, 防止紧贴导航栏
     -webkit-tap-highlight-color: transparent;
 
-    &.weui_bar_item_on {
+    &.weui_bar_item_on {        // 当前选中的导航项,字体是绿色高亮的。
         .weui_tabbar_label {
             color: #09BB07;
         }
     }
 }
 
-.weui_tabbar_icon {
+.weui_tabbar_icon {           // 导航选项卡中的图标, 居中,
+                              // 不用设置margin top bottom, 因为分别由weui_tabbar_item的padding
+                              // 和weui_tabbar_label的margin-top保证了
     margin: 0 auto;
     width: 24px;
     height: 24px;
@@ -42,7 +44,7 @@
     }
 }
 
-.weui_tabbar_label {
+.weui_tabbar_label {            // 文本居中, 未选中的导航选项卡文字为灰黑色
     text-align: center;
     color: @globalTextColor;
     font-size: 12px;

@@ -2,13 +2,13 @@
 
 .weui_cell_select {
     padding: 0;
-    .weui_select {
+    .weui_select {              // 距离右端30px, 防止遮挡箭头
         padding-right: 30px;
     }
     .weui_access_icon {
 
     }
-    .weui_cell_bd{
+    .weui_cell_bd{             // 添加一个箭头,表示这里可以下拉
         &:after{
             content: " ";
             .setArrow_Wap(right, 6px, #C8C8CD, 2px);
@@ -22,13 +22,13 @@
 }
 
 .weui_select {
-    -webkit-appearance: none;
-    border: 0;
+    -webkit-appearance: none;       // 禁用select的原生样式
+    border: 0;                      // 去掉边框和外框,看起来简洁
     outline: 0;
     background-color: transparent;
-    width: 100%;
+    width: 100%;                     // 占满整行
     font-size: inherit;
-    height: @weuiCellHeight;
+    height: @weuiCellHeight;         // 垂直居中
     line-height: @weuiCellHeight;
     position: relative;
     z-index: 1;

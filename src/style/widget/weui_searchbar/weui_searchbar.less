@@ -1,17 +1,20 @@
 @import "../../base/fn";
+/* 搜索条
+
+*/
 .weui_search_bar {
     position: relative;
     padding: 8px 10px;
-    display: flex;
+    display: flex;      // 使用flex布局, 占满整行
     box-sizing: border-box;
-    background-color: #EFEFF4;
-    &:before {
+    background-color: #EFEFF4;  // 用灰色做背景, 与输入框的白色区分
+    &:before {                  // topline 和 bottomline
         .setTopLine();
     }
     &:after {
         .setBottomLine();
     }
-    &.weui_search_focusing{
+    &.weui_search_focusing{     // 当鼠标聚焦时, 隐藏"搜索", 显示"取消"
         .weui_search_cancel{
             display: block;
         }
@@ -20,7 +23,7 @@
         }
     }
 }
-.weui_search_outer {
+.weui_search_outer {       // 搜索框outer, 白色背景, 带圆角, 边框1px
     position: relative;
     flex: auto;
     background-color: #EFEFF4;
@@ -39,7 +42,7 @@
         background: #FFFFFF;
     }
 }
-.weui_search_inner {
+.weui_search_inner {    // 搜索框inner,
     position: relative;
     padding-left: 30px;
     padding-right: 30px;
@@ -47,7 +50,7 @@
     width: 100%;
     box-sizing: border-box;
     z-index: 1;
-    .weui_search_input {
+    .weui_search_input {    // 实际是一个input输入框
         padding: 4px 0;
         width: 100%;
         height: 20/14em;
@@ -56,17 +59,17 @@
         line-height: 20/14em;
         box-sizing: content-box;
         background: transparent;
-        &:focus {
+        &:focus {           // 聚焦时, 不要浏览器自带的outline效果
             outline: none;
         }
     }
-    .weui_icon_search {
+    .weui_icon_search {     // 搜索按钮, 默认居左
         position: absolute;
         left: 10px;
         top: -2px;
         line-height: 28px;
     }
-    .weui_icon_clear {
+    .weui_icon_clear {      // 清除按钮, 默认居右
         position: absolute;
         top: -2px;
         right: 0;
@@ -74,7 +77,7 @@
         line-height: 28px;
     }
 }
-.weui_search_text {
+.weui_search_text {         // 搜索框内的文字, 默认灰色, 居中
     position: absolute;
     top: 1px;
     right: 1px;
@@ -91,17 +94,17 @@
         vertical-align: middle;
     }
     .weui_icon_search {
-        margin-right: 5px;
+        margin-right: 5px;  // 输入的文字要与搜索图标距离5px
     }
 }
-.weui_search_cancel {
-    display: none;
+.weui_search_cancel {       // "取消"文字, 与左边的框要与一点距离, 显示绿色, 默认不显示
+    display: none;          // 只有在搜索框focus的时候才显示
     margin-left: 10px;
     line-height: 28px;
     white-space: nowrap;
     color: #09BB07;
 }
-.weui_search_input:not(:valid) ~ .weui_icon_clear {
+.weui_search_input:not(:valid) ~ .weui_icon_clear { // 搜索框没有文字的时候, 不显示✘按钮
     display: none;
 }
 

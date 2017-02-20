@@ -1,22 +1,22 @@
 @import "../../base/fn";
 @weuiSwitchHeight: 32px;
-.weui_cell_switch{
+.weui_cell_switch{                  // 保证开关是居中的
     padding-top: (@weuiCellHeight - @weuiSwitchHeight) / 2;
     padding-bottom: (@weuiCellHeight - @weuiSwitchHeight) / 2;
 }
-.weui_switch{
-    appearance: none;
+.weui_switch{                       // 实际上是一个checkbox
+    appearance: none;               // 禁用原生样式
     position: relative;
     width: 52px;
     height: @weuiSwitchHeight;
-    border: 1px solid #DFDFDF;
+    border: 1px solid #DFDFDF;      // 加一个边框和圆角、背景色, 看起来比较像开关的底座
     outline: 0;
     border-radius: 16px;
     box-sizing: border-box;
-    background: #DFDFDF;
+    background: #DFDFDF;            // 未选中时, 边框和背景都是灰色
     background-color: #DFDFDF;
-    transition: background-color .1s, border .1s;
-    &:before{
+    transition: background-color .1s, border .1s;   // 开关移动过程, 背景色和边框色都渐变, 看起来有动的感觉
+    &:before{                                       // before 是底座白色背景, 用来处理背景动态效果
         content: " ";
         position: absolute;
         top: 0;
@@ -28,29 +28,29 @@
         transition:transform .3s;
         transition:transform .35s cubic-bezier(0.45, 1, 0.4, 1);
     }
-    &:after{
+    &:after{                                        // after是圆形按钮
         content: " ";
         position: absolute;
         top: 0;
         left: 0;
-        width: @weuiSwitchHeight - 2;
+        width: @weuiSwitchHeight - 2;               // 圆形, 比底座稍微小一点, 防止边界重叠,不好区分
         height: @weuiSwitchHeight - 2;
         border-radius: 15px;
-        background-color: #FFFFFF;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        background-color: #FFFFFF;                  // 空心
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);    // 来一点阴影,显得立体
         transition:transform .3s;
         box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        transition:transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+        transition:transform .35s cubic-bezier(0.4, 0.4, 0.25, 1.35); // 弹回效果, 比较有动感
     }
 
     &:checked{
-        border-color: #04BE02;
+        border-color: #04BE02;          // 选中后, 边框和背景变为绿色
         background-color: #04BE02;
-        &:before{
+        &:before{                       // 选中后,白色背景逐渐消失, 有动态效果
             transform: scale(0);
         }
         &:after{
-            transform: translateX(20px);
+            transform: translateX(20px); // 选中后, 按钮往右移动20px。 左边关, 右边开。
         }
     }
 }

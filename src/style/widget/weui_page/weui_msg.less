@@ -3,7 +3,7 @@
 
 .weui_msg {
     padding-top: @weuiMsgPaddingTop;
-    text-align: center;
+    text-align: center;                 // 所有内容都是居中的, 不同的地方是: font-size、margin-bottom、color
 
     .weui_icon_area {
         margin-bottom: @weuiMsgIconGap;
@@ -35,7 +35,7 @@
     }
 }
 
-@media screen and (min-height: @weuiMsgExtraAreaOfMinHeight) {
+@media screen and (min-height: @weuiMsgExtraAreaOfMinHeight) {      // 底部信息, 如果屏幕太小,就使用fixd布局,保证一定会展示
     .weui_extra_area {
         position: fixed;
         left: 0;

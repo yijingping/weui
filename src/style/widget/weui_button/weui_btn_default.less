@@ -1,12 +1,13 @@
 @import "../../base/fn";
 
 .weui_btn_default {
-    background-color: @weuiBtnDefaultBg;
-    color: @weuiBtnDefaultFontColor;
-    &:not(.weui_btn_disabled):visited {
+    background-color: @weuiBtnDefaultBg;  // 默认背景色白色
+    color: @weuiBtnDefaultFontColor;      // 默认前景色黑色
+    // not(.weui_btn_disabled) 是为了在button禁用时, 没有下面的效果
+    &:not(.weui_btn_disabled):visited {   // 访问过后,前景色不变
         color: @weuiBtnDefaultFontColor;
     }
-    &:not(.weui_btn_disabled):active {
+    &:not(.weui_btn_disabled):active {    // 当被按下按住的时候, 白色背景并暗, 黑色前景色变灰, 给用户一个反馈
         color: @weuiBtnDefaultActiveFontColor;
         background-color: @weuiBtnDefaultActiveBg;
     }

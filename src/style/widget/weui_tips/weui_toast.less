@@ -1,19 +1,23 @@
 @import "../../base/fn";
 
-.weui_toast {
+/* 两种toast提示
+打钩的和转圈圈的
+*/
+
+.weui_toast {           // 使用fixed布局,保证弹出在屏幕中央
     position: fixed;
     z-index: 50000;
     width: 7.6em;
     min-height: 7.6em;
-    top: 180px;
-    left: 50%;
+    top: 180px;       // 距离顶部180px, 并非完全垂直居中
+    left: 50%;        // 用left和margin-left:保证居中
     margin-left: -3.8em;
-    background: rgba(40, 40, 40, 0.75);
+    background: rgba(40, 40, 40, 0.75);     // 背景黑色半透明, 前景白色
     text-align: center;
-    border-radius: 5px;
+    border-radius: 5px;           // 弹出框有一些圆角
     color: #FFFFFF;
 }
-.weui_icon_toast {
+.weui_icon_toast {        // 弹出框内的图标
     margin: 22px 0 0;
     display: block;
     &:before {
@@ -22,27 +26,27 @@
         font-size: 55px;
     }
 }
-.weui_toast_content {
+.weui_toast_content {     // 弹出框内的文字
     margin: 0 0 15px;
 }
 
 // loading toast
-.weui_loading_toast{
+.weui_loading_toast{     // 转圈圈的toast
     .weui_toast_content{
       margin-top:64%;
       font-size:14px;
     }
 }
-.weui_loading{
+.weui_loading{          // loading 整体div
     position: absolute;
     width: 0px;
     z-index: 1;
     left: 50%;
     top: 38%;
 }
-.weui_loading_leaf{
+.weui_loading_leaf{     // 圈圈上的每一个小矩形叶子
     position: absolute;
-    top: -1px;
+    top: -1px;            // 整体半透明, 并且有一些阴影
     opacity: 0.25;
     &:before{
         content:" ";
@@ -54,7 +58,7 @@
         border-radius: 1px;
         transform-origin: left 50% 0px;
     }
-    &_0{
+    &_0{                            // 每片叶子的位置不一样, 形成一个圆圈, 起始透明时间不一样, 所以看起来像在转
         animation: opacity-60-25-0-12 1.25s linear infinite;
         &:before{
             transform: rotate(0deg) translate(7.92px, 0px);

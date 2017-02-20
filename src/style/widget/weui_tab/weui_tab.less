@@ -1,18 +1,38 @@
 @import "../../base/fn";
 @import "tabbar";
 @import "navbar";
+/* weui_tab 布局
+1) 顶部选项卡navbar
+weui_tab
+    weui_navbar
+        weui_navbar_item weui_bar_item_on
+        weui_navbar_item
+        ...
+    weui_tab_bd
+        content
 
-.weui_tab {
+2) 底部导航栏tabbar
+weui_tab
+    weui_tab_bd
+        content
+    weui_tabbar
+        weui_tabbar_item weui_bar_item_on
+        weui_tabbar_item
+        ...
+*/
+
+
+.weui_tab {         // weui_tab是container的直接子div, 占满整个屏幕
     position: relative;
     height: 100%;
 }
 
-.weui_tab_bd {
+.weui_tab_bd {              // tab body 中的内容
     box-sizing: border-box;
-    height: 100%;
-    padding-bottom: 55px;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    height: 100%;               // 占满整屏
+    padding-bottom: 55px;       // 距离底部55px, 防止被底部导航tabbar覆盖
+    overflow: auto;             // 根据内容决定是否出现导航条
+    -webkit-overflow-scrolling: touch;  // 激发手机的touch滑动属性, 滑动更流畅
 }
 
 .weui_tab_bd_item {

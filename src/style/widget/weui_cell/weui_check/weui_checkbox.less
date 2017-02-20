@@ -1,15 +1,15 @@
 @import "../../../base/fn";
 
 .weui_cells_checkbox {
-    .weui_cell_hd {
-        padding-right: @weuiCellInnerGapH;
+    .weui_cell_hd {                             // 复选框位于header
+        padding-right: @weuiCellInnerGapH;      // 和右边的文字保持一定的距离
     }
-    .weui_cell {
+    .weui_cell {                                // 按下要有高亮效果
         &:active {
             background-color: #ECECEC;
         }
     }
-    .weui_icon_checked {
+    .weui_icon_checked {                        // 未选中时,显示未打钩的空心圆,表示可以选择
         &:before {
             content: '\EA01';
             color: #C9C9C9;
@@ -23,7 +23,7 @@
 .weui_check {
     // checkbox
     .weui_cells_checkbox & {
-        &:checked {
+        &:checked {                             // 选中时,显示打钩的实心圆,表示已选择
             & + .weui_icon_checked {
                 &:before {
                     content: '\EA06';

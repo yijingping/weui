@@ -6,51 +6,51 @@
 @weuiDialogLinkActiveBc: #EEEEEE;
 
 .weui_dialog {
-    position: fixed;
-    z-index: 5000;
+    position: fixed;        // 使用绝对定位
+    z-index: 5000;          //  确保位于屏幕最顶端
     width: 85%;
-    top: 50%;
+    top: 50%;               // 这3行保证居中
     left: 50%;
     transform: translate(-50%, -50%);
 
-    background-color: @weuiDialogBackgroundColor;
+    background-color: @weuiDialogBackgroundColor;   // 白色背景, 居中, 圆角
     text-align: center;
     border-radius: 3px;
     overflow: hidden;
-    .weui_dialog_confirm & {
+    .weui_dialog_confirm & {            // 确认框
         .weui_dialog_hd {
             padding: 1.2em 20px .5em;
         }
-        .weui_dialog_bd {
+        .weui_dialog_bd {               // 提示消息, 靠左对齐
             text-align: left;
         }
     }
 }
 
-.weui_dialog_hd {
+.weui_dialog_hd {                   // 标题居中, padding 略大,且 上面的padding大于下面的, 看着比较舒服
     padding: 1.2em 0 .5em;
 }
 
-.weui_dialog_title {
+.weui_dialog_title {                 // 标题加粗加大
     font-weight: 400;
     font-size: 17px;
 }
 
-.weui_dialog_bd {
+.weui_dialog_bd {                   // padding 和文字都 略小一些
     padding: 0 20px;
     font-size: 15px;
-    color: @globalTextColor;
-    word-wrap: break-word;
+    color: @globalTextColor;        // 文字是灰色, 表示不怎么重要
+    word-wrap: break-word;          // 换行
     word-break: break-all;
 }
 
-.weui_dialog_ft {
+.weui_dialog_ft {                   // footer 用flex实现, 方便确认取消按钮均分
     position: relative;
     line-height: 42px;
     margin-top: 20px;
     font-size: 17px;
     display: flex;
-    a {
+    a {                             // a表现作为按钮,均分, 并设置按下的高亮效果
         display: block;
         flex: 1;
         color: @weuiDialogLinkColor;
@@ -60,11 +60,11 @@
             background-color: @weuiDialogLinkActiveBc;
         }
     }
-    &:after {
+    &:after {                       // 设置topline分割线
         content: " ";
         .setTopLine(@weuiDialogLineColor);
     }
-    .weui_dialog_confirm & {
+    .weui_dialog_confirm & {        // 如果是确认取消2个选项, 中间生成一条分割线
         a {
             position: relative;
             &:after {
@@ -80,7 +80,7 @@
     }
 }
 
-.weui_btn_dialog {
+.weui_btn_dialog {              // default 和 primary 2 中类型的按钮颜色不同, 起引导作用
     &.default {
         color: #353535;
     }
@@ -89,7 +89,7 @@
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {         // 如果屏幕过大, 应该保证dialog小一些,否则看着很怪。
     .weui_dialog {
         width: 35%;
     }

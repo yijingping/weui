@@ -7,12 +7,12 @@
         width:@weuiCellLabelWidth;
         box-sizing: border-box;
     }
-    .weui_cell_hd {
+    .weui_cell_hd {         //select before中的header, 如上图中的+86区号选择
         position:relative;
-        &:after {
+        &:after {           // 右边需要加一条分割线
             .setRightLine(@weuiCellBorderColor);
         }
-        &:before{
+        &:before{           // 右边加一个箭头
             content: " ";
             .setArrow_Wap(right, 6px, #C8C8CD, 2px);
 
@@ -22,7 +22,7 @@
             margin-top: -3px;
         }
     }
-    .weui_cell_bd {
+    .weui_cell_bd {    // select before中的body, 不需要加箭头, 因为已经在header展示了
         padding-left:@weuiCellGapH;
         &:after{
             display:none;

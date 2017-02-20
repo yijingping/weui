@@ -1,4 +1,10 @@
-// css2 arrow
+/*
+给箭头使用的函数.
+可以设置箭头的宽度,颜色和方向。
+
+*/
+
+// css2 arrow 。 基于css2 盒模型实现的实心三角形箭头
 .arrow(@borderWidth, @borderColor) {
     .setArrowWidth(@borderWidth);
     .setArrowColor(@borderColor);
@@ -88,7 +94,7 @@
     border-right-style: solid;
 }
 
-// css3 arrow
+// css3 arrow, 基于css3的transform实现的尖括号箭头
 .setArrowWidth_Wap(@borderWidth) {
     border-width: @borderWidth @borderWidth 0 0;
 }

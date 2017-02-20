@@ -1,11 +1,11 @@
 @import "../../base/fn";
 
 .weui_btn_primary {
-    background-color: @weuiBtnPrimaryBg;
+    background-color: @weuiBtnPrimaryBg;  // 背景绿色, 前景色默认也是白色, 在weui_btn_global已经定义过了
     &:not(.weui_btn_disabled):visited {
-        color: @weuiBtnFontColor;
+        color: @weuiBtnFontColor;         // 前景色是白色字体, 不变
     }
-    &:not(.weui_btn_disabled):active {
+    &:not(.weui_btn_disabled):active {    // 按下时, 背景色和字体都变暗
         color: @weuiBtnActiveFontColor;
         background-color: @weuiBtnPrimaryActiveBg;
     }

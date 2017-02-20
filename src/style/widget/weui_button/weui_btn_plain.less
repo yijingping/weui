@@ -1,17 +1,17 @@
 @import "../../base/fn";
-
+/* 定义了default 和 primary两种类型的空心按钮 */
 .weui_btn_plain_primary {
     color: @weuiBtnPrimaryBg;
-    border: 1px solid @weuiBtnPrimaryBg;
+    border: 1px solid @weuiBtnPrimaryBg;        // 多了一个边框
     button&, input& {
         border-width: 1px;
-        background-color: transparent;
+        background-color: transparent;          // 背景色透明
     }
     &:active {
-        border-color: @weuiBtnPrimaryActiveBg;
+        border-color: @weuiBtnPrimaryActiveBg;  // 按下时变暗绿色
     }
     &:after {
-        border-width: 0;
+        border-width: 0;                        // 禁掉按钮的after边框效果, 防止与自身的border重叠
     }
 }
 
@@ -21,7 +21,7 @@
     button&, input& {
         border-width: 1px;
         background-color: transparent;
-    }
+    }                                        // TODO: 此处应该有:active才对呀,要不然按下没反应
     &:after {
         border-width: 0;
     }

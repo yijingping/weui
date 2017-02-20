@@ -3,20 +3,51 @@
 @lineColor: #E5E5E5;
 @grayColor: #999999;
 
+/* 图文组合结构
+
+1) 带图大标题
+weui_media_box.weui_media_appmsg
+    weui_media_hd
+        img
+    weui_media_bd
+        weui_media_title
+        weui_media_desc
+
+2) 不带图,大标题
+weui_media_box.weui_media_text
+    weui_media_title
+    weui_media_desc
+
+3) 带小图和标题
+weui_media_box.weui_media_small_appmsg
+    weui_cells
+        weui_cell
+        weui_cell
+        ...
+4) 带info
+weui_media_box.weui_media_text
+    weui_media_title
+    weui_media_desc
+    weui_media_info
+        weui_media_info_meta weui_media_info_meta weui_media_info_meta_extra
+*/
+
 .weui_media_box {
-    padding: 15px;
+    padding: 15px;                  // 略大间距,显得大气
     position: relative;
-    &:before {
+    &:before {                      // topline 保证和文本对齐
         .setTopLine(@lineColor);
         left: 15px;
     }
-    &:first-child {
+    &:first-child {                 // 第一个media_box不要topline
+                                    // 因为在和panel组合使用的时候, weui_panel_hd有bottomline保证了box的topline,
+                                    // weui_panel的bottomline保证了box的bottomline。
         &:before {
             display: none
         }
     }
 
-    a&{
+    a&{                             // 如果整体是a标签,则需要强制设置color和高亮色
         color:#000000;
         .setTapColor;
         &:active{
@@ -24,25 +55,25 @@
         }
     }
 
-    .weui_media_title {
+    .weui_media_title {             // 大标题, 超出则用省略号
         font-weight: 400;
         font-size: 17px;
         .ellipsis();
         word-wrap: break-word;
         word-break: break-all;
     }
-    .weui_media_desc {
+    .weui_media_desc {              // 略小字体, 灰色, 限制在2行, 超出则用省略号, 保证不那么显眼
         color: @grayColor;
         font-size: 13px;
         line-height: 1.2;
         .ellipsisLn(2);
     }
 
-    &.weui_media_text {
+    &.weui_media_text {             // 2)和4)不带图的box, title和desc的间距要稍微大一点
         .weui_media_title {
             margin-bottom: 8px;
         }
-        .weui_media_info {
+        .weui_media_info {          // box footer信息
             margin-top: 15px;
             padding-bottom: 5px;
             font-size: 13px;
@@ -51,41 +82,41 @@
             list-style: none;
             overflow: hidden;
         }
-        .weui_media_info_meta {
+        .weui_media_info_meta {     // 内部信息用float布局, 用padding-right保证间隔
             float: left;
             padding-right: 1em;
-            &.weui_media_info_meta_extra {
+            &.weui_media_info_meta_extra {  // 在左边增加一个竖线分割
                 padding-left: 1em;
                 border-left: 1px solid #CECECE;
             }
         }
 
     }
-    &.weui_media_appmsg {
+    &.weui_media_appmsg {           // 1) 带大图的box, 使用flex布局
         display: flex;
         align-items: center;
-        .weui_media_hd {
+        .weui_media_hd {            // header, 与右边的文字保持0.8em的距离
             margin-right: .8em;
             width: 60px;
             height: 60px;
             line-height: 60px;
             text-align: center;
         }
-        .weui_media_appmsg_thumb {
+        .weui_media_appmsg_thumb {  // avatar图, 全占
             width: 100%;
             max-height: 100%;
             vertical-align: top;
         }
-        .weui_media_bd {
+        .weui_media_bd {                // 剩余空间全部给body
             flex: 1;
-            min-width: 0;
+            min-width: 0;               // TODO:这有什么用?
         }
     }
     &.weui_media_small_appmsg {
         padding: 0;
         .weui_cells {
             margin-top: 0;
-            &:before {
+            &:before {                  // 去掉weui_cells 自带的topline, 改由panel保证
                 display: none;
             }
         }

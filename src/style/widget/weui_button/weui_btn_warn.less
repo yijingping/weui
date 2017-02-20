@@ -1,11 +1,11 @@
 @import "../../base/fn";
 
 .weui_btn_warn {
-    background-color: @weuiBtnWarnBg;
+    background-color: @weuiBtnWarnBg;           // 警告,用红色背景, 字体默认是白色
     &:not(.weui_btn_disabled):visited {
         color: @weuiBtnFontColor;
     }
-    &:not(.weui_btn_disabled):active {
+    &:not(.weui_btn_disabled):active {          // 按下时, 按钮背景变暗红色, 字体变灰
         color: @weuiBtnActiveFontColor;
         background-color: @weuiBtnWarnActiveBg;
     }
